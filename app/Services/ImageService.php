@@ -32,4 +32,19 @@ class ImageService
             $gift->save();
         }
     }
+
+
+    /**
+     * Сохранить аватар пользователья
+     */
+    public function uploadCategoryIcon($category)
+    {
+        if (request()->file('icon')) {
+            $file = request()->file('icon')->store('icons', ['disk' => 'public']);
+            $category->icon = "/storage/" . $file;
+            $category->save();
+        }
+
+        return $category->icon;
+    }
 }

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +25,9 @@ Route::post('login', [AuthController::class, 'login'])->name('admin.login');
 Route::middleware(['auth:employee'])->group(function () {
     Route::resources([
         'users'                     => UserController::class,
-        'employees'                 => EmployeeController::class
+        'employees'                 => EmployeeController::class,
+        'places'                    => PlaceController::class,
+        'categories'                => CategoryController::class
     ]);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
@@ -31,5 +35,6 @@ Route::middleware(['auth:employee'])->group(function () {
 Route::prefix('')->group(function () {
     Route::put('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::put('employees/{employee}/restore', [EmployeeController::class, 'restore'])->name('employees.restore');
+    Route::put('categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
 });
 

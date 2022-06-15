@@ -15,11 +15,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::insert([
-            ['title' => 'Магазины', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Общ.Места', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Офисы', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Военкоматы', 'created_at' => now(), 'updated_at' => now()],
-            ['title' => 'Спортзалы', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Магазины', 'icon' => 'images/stores.png', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Общ.Места', 'icon' => 'images/all.png',  'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Офисы', 'icon' => 'images/office.png',  'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Военкоматы', 'icon' => 'images/default-place.png',  'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Спортзалы',  'icon' => 'images/default-place.png',  'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

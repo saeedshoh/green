@@ -23,6 +23,19 @@
                 </li> --}}
             </ul>
 
+            <h6 class="navbar-heading">Заведения</h6>
+
+            <ul class="navbar-nav mb-md-4">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}" href="{{ route('categories.index') }}"><i class="fe fe-grid"></i>Категории</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('places.*') ? 'active' : '' }}" href="{{ route('places.index') }}"><i class="fe fe-home"></i>Заведения</a>
+                </li>
+
+            </ul>
+
             <div class="mt-auto"></div>
         </div>
 
