@@ -15,7 +15,7 @@
                     </form>
                 </div>
 
-                <x-filter model="employees" search="full_name"/>
+                <x-filter model="employees" search="name"/>
             </div>
 
             <div class="table-responsive">
@@ -24,7 +24,7 @@
                         <tr>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-id">#</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">ФИО</a></th>
-                            <th><a href="#" class="text-muted list-sort" data-sort="user-username">Номер телефона</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-username">Email</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-username">Статус</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-username">Время создания</a></th>
                             <th></th>
@@ -41,12 +41,12 @@
                                         @if ($user->avatar)
                                             <img class="avatar-img rounded-circle" src="{{ asset($user->avatar) }}" alt="...">
                                         @else
-                                            <span class="avatar-title rounded-circle">{{ mb_substr($user->full_name, 0, 1) }}</span>
+                                            <span class="avatar-title rounded-circle">{{ mb_substr($user->name, 0, 1) }}</span>
                                         @endif
-                                    </div> <a class="item-name text-reset">{{ $user->full_name }}</a>
+                                    </div> <a class="item-name text-reset">{{ $user->name }}</a>
 
                                 </td>
-                                <td class="user-fullname">{{ $user->phone }}</td>
+                                <td class="user-fullname">{{ $user->email }}</td>
                                 <td class="user-fullname">
                                     @if ($user->deleted_at == null)
                                         <span class="item-score badge bg-success-soft">Активный</span>

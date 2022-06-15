@@ -1,5 +1,5 @@
-<x-dashboard-layout title="Редактирование участника #{{ $user->id }}">
-    <x-dashboard-header-small pretitle="Данные" title="Участник #{{ $user->id }}">
+<x-dashboard-layout title="Редактирование Пользовательа #{{ $user->id }}">
+    <x-dashboard-header-small pretitle="Данные" title="Пользователь #{{ $user->id }}">
         <a href="{{ route('users.index') }}" class="btn btn-primary lift">Назад</a>
     </x-dashboard-header-small>
 
@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-6 mb-3">
                             <label for="fullNameInput" class="form-label">ФИО</label>
-                            <input type="text" name="full_name" class="form-control" id="fullNameInput" value="{{ old('full_name', $user->full_name) }}" placeholder="Введите ФИО" maxlength="100" required autofocus>
+                            <input type="text" name="name" class="form-control" id="fullNameInput" value="{{ old('name', $user->name) }}" placeholder="Введите ФИО" maxlength="100" required autofocus>
                         </div>
                         <div class="col-6  mb-3">
                             <label for="phoneInput" class="form-label">Номер телефона</label>

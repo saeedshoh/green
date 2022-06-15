@@ -13,12 +13,12 @@
 
             <ul class="navbar-nav mb-md-4">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"><i class="fe fe-users"></i>Участники</a>
+                    <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"><i class="fe fe-users"></i>Пользователи</a>
                 </li>
-                {{-- <li class="nav-item">
+               <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" href="{{ route('employees.index') }}"><i class="fe fe-user-check"></i>Сотрудники</a>
                 </li>
-                <li class="nav-item">
+                {{--  <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('settings.*') ? 'active' : '' }}" href="{{ route('settings.index') }}"><i class="fe fe-settings"></i>Настройки</a>
                 </li> --}}
             </ul>
@@ -39,15 +39,15 @@
                         @if (auth()->user()->avatar)
                             <img class="avatar-img rounded-circle" src="{{ asset(auth()->user()->avatar) }}" alt="...">
                         @else
-                            <span class="avatar-title rounded-circle">{{ mb_substr(auth()->user()->full_name, 0, 1) }}</span>
+                            <span class="avatar-title rounded-circle">{{ mb_substr(auth()->user()->name, 0, 1) }}</span>
                         @endif
                     </div>
                 </a>
 
                 <!-- Menu -->
                 <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                    <a href="Pa" class="dropdown-item">Выйти</a>
-                    {{-- <a href="{{ route('logout') }}" class="dropdown-item">Выйти</a> --}}
+                    {{-- <a href="Pa" class="dropdown-item">Выйти</a> --}}
+                    <a href="{{ route('logout') }}" class="dropdown-item">Выйти</a>
                 </div>
 
             </div>

@@ -1,5 +1,5 @@
-<x-dashboard-layout title="Участники">
-    <x-dashboard-header-large pretitle="Обзор" title="Участники">
+<x-dashboard-layout title="Пользователи">
+    <x-dashboard-header-large pretitle="Обзор" title="Пользователи">
         <a href="{{ route('users.create') }}" class="btn btn-primary lift">Добавить</a>
     </x-dashboard-header-large>
 
@@ -15,7 +15,7 @@
                     </form>
                 </div>
 
-                <x-filter model="users" search="full_name"/>
+                <x-filter model="users" search="name"/>
 
             </div>
 
@@ -43,9 +43,9 @@
                                         @if ($user->avatar)
                                             <img class="avatar-img rounded-circle" src="{{ asset($user->avatar) }}" alt="...">
                                         @else
-                                            <span class="avatar-title rounded-circle">{{ mb_substr($user->full_name, 0, 1) }}</span>
+                                            <span class="avatar-title rounded-circle">{{ mb_substr($user->name, 0, 1) }}</span>
                                         @endif
-                                    </div> <a class="item-name text-reset">{{ $user->full_name }}</a>
+                                    </div> <a class="item-name text-reset">{{ $user->name }}</a>
 
                                 </td>
                                 <td class="user-fullname">{{ $user->phone }}</td>
@@ -87,7 +87,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4"><span class="text-danger">Вы еще не добавили участников</span></td>
+                                <td colspan="4"><span class="text-danger">Вы еще не добавили пользователей</span></td>
                             </tr>
                         @endforelse
                     </tbody>

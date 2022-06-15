@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,11 @@ Route::middleware(['auth:employee'])->group(function () {
         'users'                     => UserController::class,
         'employees'                 => EmployeeController::class
     ]);
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::prefix('')->group(function () {
+    Route::put('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
+    Route::put('employees/{employee}/restore', [EmployeeController::class, 'restore'])->name('employees.restore');
+});
+

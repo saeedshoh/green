@@ -12,12 +12,12 @@
 
                         <div class="col-6 mb-3">
                             <label for="fullNameInput" class="form-label">ФИО</label>
-                            <input type="text" name="full_name" class="form-control" id="fullNameInput" value="{{ old('full_name') }}" placeholder="Введите ФИО" maxlength="100" required autofocus>
+                            <input type="text" name="name" class="form-control" id="fullNameInput" value="{{ old('name') }}" placeholder="Введите ФИО" maxlength="100" required autofocus>
                         </div>
 
                         <div class="col-6  mb-3">
-                            <label for="phoneInput" class="form-label">Номер телефона</label>
-                            <input type="number" name="phone" class="form-control" id="phoneInput" value="{{ old('phone') }}" placeholder="Введите номер телефона" required>
+                            <label for="emailInput" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="emailInput" value="{{ old('email') }}" placeholder="example@gmail.com" required>
                         </div>
 
                         <div class="col-12 col-lg-6 mb-3">

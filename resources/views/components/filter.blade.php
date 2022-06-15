@@ -50,7 +50,7 @@
                     </div>
                 @endif
 
-                @if ($search == 'full_name')
+                @if ($search == 'name')
                     <div class="list-group list-group-flush mt-n4 mb-4">
                         <div class="list-group-item">
                             <div class="row align-items-center">
@@ -58,7 +58,7 @@
                                     <label for="dateStartInput">Поиск по имени</label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" name="full_name" class="form-control form-select-sm"  placeholder="Введите ФИО">
+                                    <input type="text" name="name" class="form-control form-select-sm"  placeholder="Введите ФИО">
                                 </div>
                             </div>
                         </div>

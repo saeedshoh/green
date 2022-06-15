@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
@@ -16,8 +15,8 @@ class EmployeeSeeder extends Seeder
     public function run()
     {
         Employee::insert([
-            ['name' => 'Админ Админов', 'email' => 'admin@email.com', 'password' => bcrypt('password'), 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Рахимов Джамил', 'email' => 'moderator@email.com', 'password' => bcrypt('password'), 'created_at' => now(), 'updated_at' => now()]
+            ['name' => 'Админ Админов', 'email' => 'admin@example.com', 'password' => bcrypt('password'), 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Рахимов Джамил', 'email' => 'moderator@example.com', 'password' => bcrypt('password'), 'created_at' => now(), 'updated_at' => now()]
         ]);
     }
 }

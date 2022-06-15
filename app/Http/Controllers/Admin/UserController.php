@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -25,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.user.create');
     }
 
     /**
@@ -34,20 +36,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request, ImageService $imageService)
     {
-        //
-    }
+        $user = User::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
+        $imageService->uploadImage($user);
+
+        alert()->success('Успешно!', 'Пользователь успешно добавлен!');
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -58,7 +55,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.user.edit')->withUser($user);
     }
 
     /**
@@ -68,9 +65,16 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user, ImageService $imageService)
     {
-        //
+        $user->update($request->validated());
+
+        $imageService->uploadImage($user);
+
+        alert()->success('Успешно!', 'Участник успешно обновлен!');
+
+        return redirect()->route('users.index');
+
     }
 
     /**
@@ -81,6 +85,21 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        alert()->success('Успешно!', 'Пользователь успешно удален!');
+
+        return back();
+
     }
+
+    public function restore($user)
+    {
+        User::onlyTrashed()->findOrFail($user)->restore();
+
+        alert()->success('Успешно!', 'Пользователь успешно восстановлен!');
+
+        return back();
+    }
+
 }
