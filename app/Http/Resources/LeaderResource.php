@@ -17,7 +17,6 @@ class LeaderResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'phone' => $this->phone,
             'avatar' => $this->avatar,
             'ball' => $this->ball
         ];
