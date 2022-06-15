@@ -45,6 +45,10 @@ COPY --chown=www:www . /var/www
 
 # Change current user to www
 USER www
+# Assign permissions of the working directory to the www-data user
+RUN chown -R www-data:www-data \
+        /var/www/storage \
+        /var/www/bootstrap/cache
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
