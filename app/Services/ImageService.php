@@ -47,4 +47,18 @@ class ImageService
 
         return $category->icon;
     }
+
+    /**
+     * Сохранить аватар пользователья
+     */
+    public function uploadPlaceImage($place)
+    {
+        if (request()->file('image')) {
+            $file = request()->file('image')->store('place', ['disk' => 'public']);
+            $place->image = "/storage/" . $file;
+            $place->save();
+        }
+
+        return $place->image;
+    }
 }

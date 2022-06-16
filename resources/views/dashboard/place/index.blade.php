@@ -15,7 +15,7 @@
                     </form>
                 </div>
 
-                <x-filter model="places"/>
+                <x-filter model="places" />
             </div>
 
             <div class="table-responsive">
@@ -68,6 +68,10 @@
                                         @if ($place->deleted_at == null)
                                             <a href="{{ route('places.edit', $place->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="Редактировать">
                                                 <span class="fe fe-edit-2"></span>
+                                            </a>
+
+                                            <a href="{{ route('places.qrcode', $place->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="Скачать QR-кода">
+                                                <span class="fe fe-download"></span>
                                             </a>
 
                                             <form action="{{ route('places.destroy', $place->id) }}" id="item{{ $place->id }}" method="POST">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('address');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('working_hours');
             $table->integer('points_per_visit');
             $table->string('phone');

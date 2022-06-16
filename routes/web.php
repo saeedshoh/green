@@ -36,5 +36,7 @@ Route::prefix('')->group(function () {
     Route::put('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::put('employees/{employee}/restore', [EmployeeController::class, 'restore'])->name('employees.restore');
     Route::put('categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
+    Route::put('places/{place}/restore', [PlaceController::class, 'restore'])->name('places.restore');
+    Route::get('places/{place}/download-qr', [PlaceController::class, 'qownloadQr'])->name('places.qrcode');
 });
 

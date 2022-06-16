@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Place;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Services\ImageService;
+use App\Services\QrCodeService;
+use App\Http\Requests\PlaceRequest;
+use App\Http\Controllers\Controller;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PlaceController extends Controller
 {
@@ -25,7 +30,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        return view('dashboard.place.create');
+        return view('dashboard.place.create')->withCategories(Category::select(['id', 'title'])->get());
     }
 
     /**
@@ -34,9 +39,15 @@ class PlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlaceRequest $request, ImageService $imageService)
     {
-        //
+        $place = Place::create($request->validated());
+
+        $imageService->uploadPlaceImage($place);
+
+        alert()->success('Успешно!', 'Заведения успешно добавлен!');
+
+        return redirect()->route('places.index');
     }
 
     /**
@@ -47,7 +58,7 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
-        //
+        return view('dashboard.place.show')->withPlace($place->load('category'));
     }
 
     /**
@@ -82,5 +93,15 @@ class PlaceController extends Controller
     public function destroy(Place $place)
     {
         //
+    }
+
+
+    public function qownloadQr(Place $place, QrCodeService $service)
+    {
+        $path = $service->generatePath($place->title);
+        QrCode::margin(5)->format('png')->size(500)->generate(url('/api/place/' . $place->id . '/click'), $path);
+
+        return response()->download($path);
+
     }
 }
