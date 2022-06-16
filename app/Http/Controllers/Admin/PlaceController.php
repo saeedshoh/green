@@ -9,6 +9,7 @@ use App\Services\ImageService;
 use App\Services\QrCodeService;
 use App\Http\Requests\PlaceRequest;
 use App\Http\Controllers\Controller;
+use App\Services\GpsService;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PlaceController extends Controller
@@ -67,9 +68,10 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place)
+    public function edit(Place $place, GpsService $gpsService)
     {
-        //
+        // dd($gpsService->distance(38.571453, 68.789827, 38.570220, 68.791975, "N"));
+        dd($gpsService->haversineGreatCircleDistance(38.571407, 68.789770, 38.57124328278024, 68.78994733537819));
     }
 
     /**
