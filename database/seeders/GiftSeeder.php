@@ -15,7 +15,7 @@ class GiftSeeder extends Seeder
     public function run()
     {
         Gift::insert([
-            ['title' => 'Соберай баллы сканируя QR коды', 'image'=> 'img/playstation.png', 'description' => 'iPhone 12 Pro Max Black Edition', 'deadline' => '2019-12-31', 'created_at' => now(), 'updated_at' => now()],
+            ['title' => 'Соберай баллы сканируя QR коды', 'image'=> 'images/playstation.png', 'description' => 'iPhone 12 Pro Max Black Edition', 'deadline' => '2019-12-31', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
