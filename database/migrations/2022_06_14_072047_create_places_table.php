@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('working_hours');
             $table->integer('points_per_visit');
             $table->string('phone');
-            $table->float('lat');
-            $table->float('lng');
+            $table->float('lat', 32, 16);
+            $table->float('lng', 32, 16);
             $table->foreignId('category_id');
             $table->softDeletes();
             $table->timestamps();

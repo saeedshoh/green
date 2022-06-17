@@ -70,8 +70,7 @@ class PlaceController extends Controller
      */
     public function edit(Place $place, GpsService $gpsService)
     {
-        // dd($gpsService->distance(38.571453, 68.789827, 38.570220, 68.791975, "N"));
-        dd($gpsService->haversineGreatCircleDistance(38.571407, 68.789770, 38.57124328278024, 68.78994733537819));
+        dd($gpsService->measureDistanceDetweenPoint(38.558496, 68.762619, 38.558373, 68.761243));
     }
 
     /**

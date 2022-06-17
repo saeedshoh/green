@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('balls', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('phone')->unique();
-            $table->uuid()->nullable();
-            $table->string('avatar')->nullable();
-            $table->integer('ball')->default(0);
-            $table->softDeletes();
+            $table->foreignId('user_id');
+            $table->integer('model_id')->comment('user_id or place_id');
+            $table->enum('type', ['place', 'hello']);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('balls');
     }
 };

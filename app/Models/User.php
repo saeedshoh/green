@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['phone', 'name'];
+    protected $fillable = ['phone', 'name', 'uuid', 'avatar'];
 
 
     /**

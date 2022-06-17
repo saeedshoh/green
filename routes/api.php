@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\GiftController;
-use App\Http\Controllers\Front\{AuthController, CategoryController, LeaderController, LogoutController, PlaceController};
+use App\Http\Controllers\Front\MarkController;
+use App\Http\Controllers\Front\{AuthController, CategoryController, LeaderController, LogoutController, PlaceController, QrCodeController};;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,19 @@ Route::prefix('auth')->group(function () {
 Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
     Route::get('gift', GiftController::class);
     Route::get('leaders', LeaderController::class);
+    Route::get('marks', MarkController::class);
     Route::get('categories', [CategoryController::class, 'index']);
     Route::get('categories/{category}', [CategoryController::class, 'show']);
     Route::get('places/{place}', PlaceController::class);
+});
+
+
+/*
+|-------------------------------------------------------------------------
+| API Routes for qrcode
+|-------------------------------------------------------------------------
+*/
+Route::prefix('qrcode')->middleware(['auth:sanctum',])->group(function () {
+    Route::post('place/{place}', [QrCodeController::class, 'place']);
+    Route::post('user/{uuid}', [QrCodeController::class, 'user']);
 });

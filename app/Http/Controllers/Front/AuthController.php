@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         $this->optService->store($request, $opt);
 
-        return response()->success('Ваш код для подтверждения:' . $opt, 200);
+        return response()->success($opt, 200);
     }
 
 
@@ -37,7 +37,7 @@ class AuthController extends Controller
             return response()->error('Введен неправильный код подтверждения', 403);
         }
 
-        $user = User::withTrashed()->firstOrCreate(['phone' => $request->phone]);
+        $user = User::firstOrCreate(['phone' => $request->phone], ['phone' => $request->phone, 'uuid' => generateUuid()]);
 
         Auth::login($user);
 
