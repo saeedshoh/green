@@ -16,10 +16,6 @@ class GiftController extends Controller
      */
     public function __invoke()
     {
-        return response()->json([
-            'data' => 'images/banner.jpg'
-        ]);
-        // todo
-        // return new GiftResource(Gift::latest()->first());
+        return new GiftResource(Gift::latest()->first());
     }
 }
