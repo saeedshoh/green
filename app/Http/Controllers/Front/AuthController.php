@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthResource;
 use App\Http\Resources\UserResource;
 use App\Services\NotificationService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -35,13 +36,15 @@ class AuthController extends Controller
     }
 
 
-    public function verifyOtp(AuthRequest $request)
+    public function verifyOtp(AuthRequest $request, UserService $userService)
     {
-        if (!$this->optService->exists($request)) {
+        if (!$this->optService->exists($request))
             return response()->error('Введен неправильный код подтверждения', 403);
-        }
 
-        $user = User::firstOrCreate(['phone' => $request->phone], ['phone' => $request->phone, 'uuid' => generateUuid()]);
+        $user = User::withTrashed()->firstOrCreate(['phone' => $request->phone], ['phone' => $request->phone, 'uuid' => generateUuid()]);
+
+        if ($user->trashed())
+            return response()->error('Вы заблокированы администраторами. Пожалуйста обратитесь к службой поддержки', 403);
 
         Auth::login($user);
 

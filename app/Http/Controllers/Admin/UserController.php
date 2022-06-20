@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Services\ImageService;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -45,6 +44,19 @@ class UserController extends Controller
         alert()->success('Успешно!', 'Пользователь успешно добавлен!');
 
         return redirect()->route('users.index');
+    }
+
+      /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Place  $place
+     * @return \Illuminate\Http\Response
+     */
+    public function show($user)
+    {
+        $user = User::withTrashed()->findOrFail($user);
+
+        return view('dashboard.user.show')->withUser($user);
     }
 
     /**

@@ -60,10 +60,14 @@
                                 <td class="user-username">{{ $user->created_at }}</td>
                                 <td>
                                     <div class="d-flex justify-content-end">
+
+                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="Подробнее">
+                                            <span class="fe fe-info"></span>
+                                        </a>
                                         @if ($user->deleted_at == null)
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="Редактировать">
+                                            {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="Редактировать">
                                                 <span class="fe fe-edit-2"></span>
-                                            </a>
+                                            </a> --}}
 
                                             <form action="{{ route('users.destroy', $user->id) }}" id="item{{ $user->id }}" method="POST">
                                                 @csrf
