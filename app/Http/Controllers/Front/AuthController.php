@@ -8,6 +8,7 @@ use App\Http\Requests\AuthRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthResource;
 use App\Http\Resources\UserResource;
+use App\Services\NotificationService;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -19,7 +20,7 @@ class AuthController extends Controller
         $this->optService = $optService;
     }
 
-    public function sendOtp(AuthRequest $request)
+    public function sendOtp(AuthRequest $request, NotificationService $notificationService)
     {
         if ($this->optService->beyondLimit())
             return response()->error('Слишком много попыток, повторите позже!', 429);
@@ -27,6 +28,8 @@ class AuthController extends Controller
         $opt = rand(100000, 999999);
 
         $this->optService->store($request, $opt);
+
+        $notificationService->sendSms($request->phone, $opt);
 
         return response()->success($opt, 200);
     }
