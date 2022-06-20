@@ -4,8 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class AuthResource extends JsonResource
 {
+    public $token;
 
     /**
      * The "data" wrapper that should be applied.
@@ -14,6 +15,13 @@ class UserResource extends JsonResource
      */
     public static $wrap = 'user';
 
+
+    public function __construct($resource, string $token = null)
+    {
+        parent::__construct($resource);
+
+        $this->token = $token;
+    }
     /**
      * Transform the resource into an array.
      *
@@ -34,6 +42,7 @@ class UserResource extends JsonResource
             'lng'       => $this->lng,
             'ball'      => $this->ball,
             'position'  => $this->position,
+            'token'     => $this->token,
         ];
     }
 }

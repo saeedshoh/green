@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Models\Place;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QrCodeRequest;
+use App\Http\Resources\PlaceResource;
 use App\Services\GpsService;
 use App\Services\UserService;
 
@@ -20,9 +21,7 @@ class QrCodeController extends Controller
         $userService->addBalls($place->points_per_visit, $place->id);
 
 
-
-        return response()->success('+'. $place->points_per_visit. ' баллов за посещение', 200);
-
+        return new PlaceResource($place);
     }
 
     public function user($uuid)

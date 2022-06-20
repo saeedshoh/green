@@ -104,7 +104,11 @@ return [
     */
 
     'attributes' => [
-        'phone' => 'телефон'
+        'phone'     => 'телефон',
+        'name'      => 'фио',
+        'gender'    => 'пол',
+        'birthdate' => 'дата рождения',
+        'avatar'    => 'аватар',
     ],
 
 ];

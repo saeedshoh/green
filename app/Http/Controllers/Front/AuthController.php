@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Services\OptService;
 use App\Http\Requests\AuthRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AuthResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +46,7 @@ class AuthController extends Controller
 
         $token = auth()->user()->createToken('user')->plainTextToken;
 
-        return new UserResource(auth()->user(), $token);
+        return new AuthResource(auth()->user(), $token);
     }
 
 
