@@ -47,6 +47,7 @@ Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
 |-------------------------------------------------------------------------
 */
 Route::prefix('qrcode')->middleware(['auth:sanctum',])->group(function () {
+    Route::get('generate', [QrCodeController::class, 'generate']);
     Route::post('place/{place}', [QrCodeController::class, 'place']);
     Route::post('user/{uuid}', [QrCodeController::class, 'user']);
 });

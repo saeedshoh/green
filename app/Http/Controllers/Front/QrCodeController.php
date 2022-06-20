@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\User;
 use App\Models\Place;
+use App\Services\GpsService;
+use App\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QrCodeRequest;
 use App\Http\Resources\PlaceResource;
-use App\Services\GpsService;
-use App\Services\UserService;
 
 class QrCodeController extends Controller
 {
@@ -24,8 +25,21 @@ class QrCodeController extends Controller
         return new PlaceResource($place);
     }
 
-    public function user($uuid)
+    public function user($uuid, QrCodeRequest $request, GpsService $gpsService, UserService $userService)
     {
-        dd($uuid);
+        $user = User::whereUuid($uuid)->firstOrFail();
+        dd($user);
+        if ($gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
+            return response()->error('Заведения не рядом с вами, пожалуйста, подойдите ближе ', 403);
+    }
+
+
+    public function generate(QrCodeRequest $request)
+    {
+        auth()->user()->update($request->validated());
+
+        return response()->json([
+            'data' => auth()->user()->uuid
+        ]);
     }
 }
