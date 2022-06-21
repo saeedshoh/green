@@ -41,4 +41,21 @@ class User extends Authenticatable
 
         return $users && $this->ball != 0 ? array_search($this->id, $users) + 1 : 0;
     }
+
+
+    // todo
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->name = 'Yuldur';
+            $user->avatar = 'images/default.png';
+            $user->save();
+        });
+    }
 }
