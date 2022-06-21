@@ -14,7 +14,7 @@ class NotificationService
         //     new \Vonage\SMS\Message\SMS("992".$phone, 'CheckIn', 'Код для подтверждения: '.$code)
         // );
 
-        $message = $response->current();
+        // $message = $response->current();
 
         // if ($message->getStatus() == 0) {
         //     echo "The message was sent successfully\n";
