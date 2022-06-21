@@ -14,5 +14,5 @@ class Ball extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'model_id', 'type'];
+    protected $fillable = ['user_id', 'model_id', 'type', 'ball'];
 }

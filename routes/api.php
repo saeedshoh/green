@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\GiftController;
 use App\Http\Controllers\Front\MarkController;
-use App\Http\Controllers\Front\{AuthController, CategoryController, LeaderController, LogoutController, PlaceController, QrCodeController, UpdateProfileController, UploadController};;
+use App\Http\Controllers\Front\{AuthController, BallHistoryController, CategoryController, LeaderController, LogoutController, PlaceController, QrCodeController, UpdateProfileController, UploadController};;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,7 @@ Route::prefix('auth')->group(function () {
 */
 Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
     Route::get('gift', GiftController::class);
+    Route::get('ball-history', BallHistoryController::class);
     Route::get('leaders', LeaderController::class);
     Route::get('marks', MarkController::class);
     Route::post('upload-avatar', UploadController::class);

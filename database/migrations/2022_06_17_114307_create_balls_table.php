@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('model_id')->comment('user_id or place_id');
-            $table->enum('type', ['place', 'hello']);
+            $table->enum('type', ['place', 'connect']);
+            $table->integer('ball');
             $table->timestamps();
         });
     }
