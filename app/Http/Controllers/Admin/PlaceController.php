@@ -57,8 +57,10 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show($place)
     {
+        $place = Place::withTrashed()->findOrFail($place);
+
         return view('dashboard.place.show')->withPlace($place->load('category'));
     }
 
@@ -68,9 +70,12 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place, GpsService $gpsService)
+    public function edit(Place $place)
     {
-        dd($gpsService->measureDistanceDetweenPoint(38.558496, 68.762619, 38.558373, 68.761243));
+        return view('dashboard.place.edit')->with([
+            'place'         => $place,
+            'categories'   => Category::select(['id', 'title'])->get(),
+        ]);
     }
 
     /**
@@ -80,9 +85,15 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Place $place)
+    public function update(PlaceRequest $request, Place $place, ImageService $imageService)
     {
-        //
+        $place->update($request->validated());
+
+        $imageService->uploadPlaceImage($place);
+
+        alert()->success('Успешно!', 'Точка успешно обновлена!');
+
+        return redirect()->route('places.index');
     }
 
     /**
@@ -93,7 +104,20 @@ class PlaceController extends Controller
      */
     public function destroy(Place $place)
     {
-        //
+        $place->delete();
+
+        alert()->success('Успешно!', 'Точка успешно удалена!');
+
+        return back();
+    }
+
+    public function restore($place)
+    {
+        Place::onlyTrashed()->findOrFail($place)->restore();
+
+        alert()->success('Успешно!', 'Точка успешно восстановлена!');
+
+        return back();
     }
 
 
@@ -103,6 +127,5 @@ class PlaceController extends Controller
         QrCode::margin(5)->format('png')->size(500)->generate($place->uuid, $path);
 
         return response()->download($path);
-
     }
 }
