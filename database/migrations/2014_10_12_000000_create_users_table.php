@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name')->default('Yuldur');
             $table->string('phone')->unique();
             $table->uuid()->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('images/default.png');
             $table->integer('ball')->default(0);
             $table->date('birthday')->nullable();
             $table->boolean('gender')->default(1);
