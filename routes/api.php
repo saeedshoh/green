@@ -36,6 +36,7 @@ Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
     Route::put('update', UpdateProfileController::class);
     Route::get('categories', [CategoryController::class, 'index']);
     Route::get('categories/{category}', [CategoryController::class, 'show']);
+    Route::get('user', [AuthController::class, 'user']);
     Route::get('places/{place}', PlaceController::class);
 
 });
@@ -48,6 +49,5 @@ Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
 */
 Route::prefix('qrcode')->middleware(['auth:sanctum',])->group(function () {
     Route::get('generate', [QrCodeController::class, 'generate']);
-    Route::post('place/{place}', [QrCodeController::class, 'place']);
     Route::post('user/{uuid}', [QrCodeController::class, 'user']);
 });
