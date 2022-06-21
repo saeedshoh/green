@@ -27,4 +27,18 @@ class User extends Authenticatable
     {
         return $query->where('ball', '!=', 0)->orderBy('ball', 'desc');
     }
+
+
+    /**
+     * Получить средное время ответа.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPositionAttribute($value)
+    {
+        $users = User::leaders()->pluck('id')->toArray();
+
+        return $users && $this->ball != 0 ? array_search($this->id, $users) + 1 : 0;
+    }
 }
