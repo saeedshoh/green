@@ -27,19 +27,21 @@ class QrCodeController extends Controller
             $userService->updateUuid($user);
 
             return new UserResource($user);
-        } else {
+        }
 
-            $place = Place::whereUuid($uuid)->first();
+        $place = Place::whereUuid($uuid)->first();
 
+        if ($place) {
             if ($gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
                 return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
 
             $userService->addPlaceBalls($place->points_per_visit, $place->id);
 
-
             return new PlaceResource($place);
         }
+
+        return response()->json(['message' => 'Данные не найдены'], 404);
     }
 
 
