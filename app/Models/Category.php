@@ -18,7 +18,7 @@ class Category extends Model
     protected $fillable = ['title', 'icon'];
 
     /**
-     * Получить все заведения в категории.
+     * Получить все точки в категории.
      */
     public function places()
     {

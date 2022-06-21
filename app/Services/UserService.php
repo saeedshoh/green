@@ -23,7 +23,7 @@ class UserService
     }
 
     /**
-     * Проверка получение последний баллов от заведения
+     * Проверка получение последний баллов от точки
      */
     public function checkReceiptLastPointsFromPlace($place_id)
     {

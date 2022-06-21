@@ -1,5 +1,5 @@
-<x-dashboard-layout title="Добавление заведения">
-    <x-dashboard-header-small pretitle="Новая" title="Заведения">
+<x-dashboard-layout title="Добавление точки">
+    <x-dashboard-header-small pretitle="Новая" title="Точка">
         <a href="{{ route('places.index') }}" class="btn btn-primary lift">Назад</a>
     </x-dashboard-header-small>
 
@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-12 mb-3">
                             <label for="fullNameInput" class="form-label">Название</label>
-                            <input type="text" name="title" class="form-control" id="fullNameInput" value="{{ old('title') }}" placeholder="Введите название заведения" maxlength="100" required autofocus>
+                            <input type="text" name="title" class="form-control" id="fullNameInput" value="{{ old('title') }}" placeholder="Введите название точки" maxlength="100" required autofocus>
                         </div>
 
                         <div class="col-6  mb-3">
@@ -21,7 +21,7 @@
 
                         <div class="col-6 mb-3">
                             <label for="addressInput" class="form-label">Адрес</label>
-                            <input type="text" name="address" class="form-control" id="addressInput" value="{{ old('address') }}" placeholder="Введите адреса заведения" maxlength="100" required autofocus>
+                            <input type="text" name="address" class="form-control" id="addressInput" value="{{ old('address') }}" placeholder="Введите адреса точки" maxlength="100" required autofocus>
                         </div>
 
                         <div class="col-6 mb-3">
@@ -31,12 +31,12 @@
 
                         <div class="col-6 mb-3">
                             <label for="phoneInput" class="form-label">Телефон</label>
-                            <input type="text" name="phone" class="form-control" id="phoneInput" value="{{ old('phone') }}" placeholder="Введите номер телефона заведения" maxlength="100" required autofocus>
+                            <input type="text" name="phone" class="form-control" id="phoneInput" value="{{ old('phone') }}" placeholder="Введите номер телефона точки" maxlength="100" required autofocus>
                         </div>
 
                         <div class="col-6 mb-3">
                             <label for="hoursInput" class="form-label">Режим работы</label>
-                            <input type="text" name="working_hours" class="form-control" id="hoursInput" value="{{ old('working_hours') }}" placeholder="Введите номер телефона заведения" maxlength="100" required autofocus>
+                            <input type="text" name="working_hours" class="form-control" id="hoursInput" value="{{ old('working_hours') }}" placeholder="Введите номер телефона точки" maxlength="100" required autofocus>
                         </div>
 
                         <div class="col-6 mb-3">
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="col-12 mb-3">
-                            <label for="addressInput" class="form-label">Выберите расположение заведения на карте</label>
+                            <label for="addressInput" class="form-label">Выберите расположение точки на карте</label>
                             <div id="map" style="height: 400px"> </div>
                         </div>
 

@@ -44,8 +44,8 @@ class PlaceRequest extends FormRequest
     public function messages()
     {
         return [
-            'lat.required' => 'Определите адрес заведения на карте',
-            'lng.required' => 'Определите адрес заведения на карте'
+            'lat.required' => 'Определите адрес точки на карте',
+            'lng.required' => 'Определите адрес точки на карте'
         ];
     }
 }

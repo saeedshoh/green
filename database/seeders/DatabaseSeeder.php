@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             GiftSeeder::class
         ]);
 
-        Place::factory(25)->create();
+        // Place::factory(25)->create();
     }
 }

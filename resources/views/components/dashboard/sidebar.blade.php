@@ -23,7 +23,7 @@
                 </li> --}}
             </ul>
 
-            <h6 class="navbar-heading">Заведения</h6>
+            <h6 class="navbar-heading">Точки</h6>
 
             <ul class="navbar-nav mb-md-4">
                 <li class="nav-item">
@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('places.*') ? 'active' : '' }}" href="{{ route('places.index') }}"><i class="fe fe-home"></i>Заведения</a>
+                    <a class="nav-link {{ request()->routeIs('places.*') ? 'active' : '' }}" href="{{ route('places.index') }}"><i class="fe fe-map-pin"></i>Точки</a>
                 </li>
 
             </ul>

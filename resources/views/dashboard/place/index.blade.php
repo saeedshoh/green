@@ -1,5 +1,5 @@
-<x-dashboard-layout title="Заведения">
-    <x-dashboard-header-large pretitle="Обзор" title="Заведения">
+<x-dashboard-layout title="Точки">
+    <x-dashboard-header-large pretitle="Обзор" title="Точки">
         <a href="{{ route('places.create') }}" class="btn btn-primary lift">Добавить</a>
     </x-dashboard-header-large>
 
@@ -96,7 +96,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4"><span class="text-danger">Вы еще не добавили призов</span></td>
+                                <td colspan="4"><span class="text-danger">Вы еще не добавили точки</span></td>
                             </tr>
                         @endforelse
                     </tbody>

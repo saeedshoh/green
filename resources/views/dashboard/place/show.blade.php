@@ -1,5 +1,5 @@
-<x-dashboard-layout title="Информация о заведения">
-    <x-dashboard-header-small pretitle="Информация" title="Заведения">
+<x-dashboard-layout title="Информация о точке">
+    <x-dashboard-header-small pretitle="Информация" title="Точка">
         <a href="{{ route('places.index') }}" class="btn btn-primary lift">Назад</a>
     </x-dashboard-header-small>
 

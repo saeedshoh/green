@@ -18,7 +18,7 @@ class Place extends Model
     protected $fillable = ['title', 'address', 'category_id', 'working_hours', 'points_per_visit', 'phone', 'lat', 'lng'];
 
     /**
-     * Получить категорию, которому принадлежит заведения.
+     * Получить категорию, которому принадлежит точки.
      */
     public function category()
     {

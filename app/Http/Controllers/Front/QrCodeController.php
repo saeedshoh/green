@@ -16,7 +16,7 @@ class QrCodeController extends Controller
     public function place(Place $place, QrCodeRequest $request, GpsService $gpsService, UserService $userService)
     {
         if ($gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
-            return response()->error('Заведения не рядом с вами, пожалуйста, подойдите ближе ', 403);
+            return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
         // $userService->checkReceiptLastPointsFromPlace($place->id);
 

@@ -46,7 +46,7 @@ class PlaceController extends Controller
 
         $imageService->uploadPlaceImage($place);
 
-        alert()->success('Успешно!', 'Заведения успешно добавлен!');
+        alert()->success('Успешно!', 'Точка успешно добавлена!');
 
         return redirect()->route('places.index');
     }
