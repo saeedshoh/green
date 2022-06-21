@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->integer('ball')->default(0);
             $table->date('birthday')->nullable();
-            $table->boolean('gender')->nullable();
+            $table->boolean('gender')->default(1);
             $table->float('lat', 32, 16)->nullable();
             $table->float('lng', 32, 16)->nullable();
             $table->softDeletes();
