@@ -16,6 +16,6 @@ class LeaderController extends Controller
      */
     public function __invoke()
     {
-        return LeaderResource::collection(User::leaders()->get());
+        return LeaderResource::collection(User::leaders()->paginate(20));
     }
 }
