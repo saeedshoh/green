@@ -13,7 +13,7 @@ class ImageService
     public function uploadImage($user)
     {
         if (request()->file('avatar')) {
-            $file = request()->file('avatar')->store('avatars', ['disk' => 'public']);
+            $file = request()->file('avatar')->store('avatars', ['disk' => 'files']);
             $user->avatar = "/storage/" . $file;
             $user->save();
         }
