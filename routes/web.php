@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\PlaceController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,9 @@ Route::prefix('')->group(function () {
     Route::put('categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
     Route::put('places/{place}/restore', [PlaceController::class, 'restore'])->name('places.restore');
     Route::get('places/{place}/download-qr', [PlaceController::class, 'qownloadQr'])->name('places.qrcode');
+});
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
 });
 
