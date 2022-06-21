@@ -15,7 +15,7 @@ class Place extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'address', 'category_id', 'working_hours', 'points_per_visit', 'phone', 'lat', 'lng'];
+    protected $fillable = ['title', 'address', 'category_id', 'working_hours', 'points_per_visit', 'uuid','phone', 'lat', 'lng'];
 
     /**
      * Получить категорию, которому принадлежит точки.

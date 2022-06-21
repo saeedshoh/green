@@ -42,7 +42,7 @@ class PlaceController extends Controller
      */
     public function store(PlaceRequest $request, ImageService $imageService)
     {
-        $place = Place::create($request->validated());
+        $place = Place::create($request->validated() + ['uuid' => generateUuid()]);
 
         $imageService->uploadPlaceImage($place);
 
@@ -100,7 +100,7 @@ class PlaceController extends Controller
     public function qownloadQr(Place $place, QrCodeService $service)
     {
         $path = $service->generatePath($place->title);
-        QrCode::margin(5)->format('png')->size(500)->generate(url('/api/place/' . $place->id . '/click'), $path);
+        QrCode::margin(5)->format('png')->size(500)->generate($place->uuid, $path);
 
         return response()->download($path);
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('address');
+            $table->uuid()->nullable();
             $table->string('image')->nullable();
             $table->string('working_hours');
             $table->integer('points_per_visit');

@@ -45,7 +45,7 @@
                             </div>
                             <div class="card-body text-center">
 
-                                {!! QrCode::size(300)->generate(url('/api/place/' . $place->id . '/click')) !!}
+                                {!! QrCode::size(300)->generate($place->uuid) !!}
 
                             </div>
                         </div>
