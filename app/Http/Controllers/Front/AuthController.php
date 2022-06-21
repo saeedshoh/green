@@ -23,14 +23,16 @@ class AuthController extends Controller
 
     public function sendOtp(AuthRequest $request, NotificationService $notificationService)
     {
-        if ($this->optService->beyondLimit())
-            return response()->error('Слишком много попыток, повторите позже!', 429);
+        //todo
+
+        // if ($this->optService->beyondLimit())
+        //     return response()->error('Слишком много попыток, повторите позже!', 429);
 
         $opt = rand(100000, 999999);
 
         $this->optService->store($request, $opt);
 
-        $notificationService->sendSms($request->phone, $opt);
+        // $notificationService->sendSms($request->phone, $opt);
 
         return response()->success($opt, 200);
     }
