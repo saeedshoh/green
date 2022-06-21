@@ -31,8 +31,8 @@ class QrCodeController extends Controller
 
             $place = Place::whereUuid($uuid)->first();
 
-            // if ($gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
-            //     return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
+            if ($gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
+                return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
 
             $userService->addPlaceBalls($place->points_per_visit, $place->id);
