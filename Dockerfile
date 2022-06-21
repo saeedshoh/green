@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     locales \
+    libmagickwand-dev \
+    pecl install imagick \
+    docker-php-ext-enable imagick \
     zip \
     jpegoptim optipng pngquant gifsicle \
     vim \
@@ -47,8 +50,8 @@ COPY --chown=www:www . /var/www
 USER www
 # Assign permissions of the working directory to the www-data user
 RUN chown -R www-data:www-data \
-        /var/www/storage \
-        /var/www/bootstrap/cache
+    /var/www/storage \
+    /var/www/bootstrap/cache
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
