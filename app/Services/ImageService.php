@@ -27,8 +27,8 @@ class ImageService
     public function uploadGiftImage($gift)
     {
         if (request()->file('image')) {
-            $file = request()->file('image')->store('gift', ['disk' => 'public']);
-            $gift->image = "/storage/" . $file;
+            $file = request()->file('image')->store('gift', ['disk' => 'files']);
+            $gift->image = "/files/" . $file;
             $gift->save();
         }
     }
@@ -40,8 +40,8 @@ class ImageService
     public function uploadCategoryIcon($category)
     {
         if (request()->file('icon')) {
-            $file = request()->file('icon')->store('icons', ['disk' => 'public']);
-            $category->icon = "/storage/" . $file;
+            $file = request()->file('icon')->store('icons', ['disk' => 'files']);
+            $category->icon = "/files/" . $file;
             $category->save();
         }
 
@@ -54,8 +54,8 @@ class ImageService
     public function uploadPlaceImage($place)
     {
         if (request()->file('image')) {
-            $file = request()->file('image')->store('place', ['disk' => 'public']);
-            $place->image = "/storage/" . $file;
+            $file = request()->file('image')->store('place', ['disk' => 'files']);
+            $place->image = '/files/'.$file;
             $place->save();
         }
 

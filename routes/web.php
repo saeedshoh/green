@@ -41,7 +41,3 @@ Route::prefix('')->group(function () {
     Route::get('places/{place}/download-qr', [PlaceController::class, 'qownloadQr'])->name('places.qrcode');
 });
 
-Route::get('/linkstorage', function () {
-    Artisan::call('storage:link');
-});
-
