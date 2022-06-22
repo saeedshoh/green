@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Place;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Question;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +22,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Place::factory(25)->create();
+        // Question::factory(3)->create();
     }
 }

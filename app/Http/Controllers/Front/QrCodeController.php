@@ -62,11 +62,12 @@ class QrCodeController extends Controller
         if ($user->id == auth()->user()->id)
             return response()->error('Вы не можете сканировать свой QR ', 403);
 
-        // $this->userService->hasConnectionOnLastDay($user);
+        if ($this->userService->hasConnectScanOnLastDay($user))
+            return response()->error('Вы можете использовать баллы U-Connect только 1 раз в день ', 403);
 
         $this->userService->addUserBalls(auth()->user(), $user);
 
-        // $this->userService->updateUuid($user);
+        $this->userService->updateUuid($user);
 
         return new UserResource($user);
     }
@@ -76,6 +77,8 @@ class QrCodeController extends Controller
         if ($this->gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
             return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
+        if ($this->userService->hasPlaceScanOnLastDay($place))
+            return response()->error('Вы можете использовать баллы QR- Places только 1 раз в день ', 403);
 
         $this->userService->addPlaceBalls($place->points_per_visit, $place->id);
 

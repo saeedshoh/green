@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Ball;
 use App\Models\User;
+use App\Models\Place;
 
 class UserService
 {
@@ -63,12 +64,23 @@ class UserService
         $user->save();
     }
 
-    public function hasConnectionOnLastDay(User $user)
+    public function hasConnectScanOnLastDay(User $user)
     {
         $lastConnect = auth()->user()->connectBalls()->where('model_id', $user->id)->latest()->first();
 
         if ($lastConnect && now()->subDay() < $lastConnect->created_at)
-            
+            return true;
 
+        return false;
+    }
+
+    public function hasPlaceScanOnLastDay(Place $place)
+    {
+        $lastConnect = auth()->user()->placeBalls()->where('model_id', $place->id)->latest()->first();
+
+        if ($lastConnect && now()->subDay() < $lastConnect->created_at)
+            return true;
+
+        return false;
     }
 }

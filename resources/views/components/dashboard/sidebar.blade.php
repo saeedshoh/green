@@ -15,12 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"><i class="fe fe-users"></i>Пользователи</a>
                 </li>
-               <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" href="{{ route('employees.index') }}"><i class="fe fe-user-check"></i>Сотрудники</a>
                 </li>
-                {{--  <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('settings.*') ? 'active' : '' }}" href="{{ route('settings.index') }}"><i class="fe fe-settings"></i>Настройки</a>
-                </li> --}}
             </ul>
 
             <h6 class="navbar-heading">Точки</h6>
@@ -34,6 +31,14 @@
                     <a class="nav-link {{ request()->routeIs('places.*') ? 'active' : '' }}" href="{{ route('places.index') }}"><i class="fe fe-map-pin"></i>Точки</a>
                 </li>
 
+            </ul>
+
+            <h6 class="navbar-heading"></h6>
+
+            <ul class="navbar-nav mb-md-4">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}" href="{{ route('categories.index') }}"><i class="fe fe-grid"></i>Категории</a>
+                </li>
             </ul>
 
             <div class="mt-auto"></div>
