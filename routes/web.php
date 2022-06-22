@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,8 @@ Route::middleware(['auth:employee'])->group(function () {
         'users'                     => UserController::class,
         'employees'                 => EmployeeController::class,
         'places'                    => PlaceController::class,
-        'categories'                => CategoryController::class
+        'categories'                => CategoryController::class,
+        'quizzes'                   => QuizController::class
     ]);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
@@ -38,6 +40,7 @@ Route::prefix('')->group(function () {
     Route::put('employees/{employee}/restore', [EmployeeController::class, 'restore'])->name('employees.restore');
     Route::put('categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
     Route::put('places/{place}/restore', [PlaceController::class, 'restore'])->name('places.restore');
+    Route::put('quizzes/{quiz}/restore', [QuizController::class, 'restore'])->name('quizzes.restore');
     Route::get('places/{place}/download-qr', [PlaceController::class, 'qownloadQr'])->name('places.qrcode');
 });
 

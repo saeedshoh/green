@@ -9,9 +9,10 @@
         </a>
 
         <div class="collapse navbar-collapse" id="sidebarCollapse">
+            <hr class="navbar-divider">
             <h6 class="navbar-heading">Пользователи</h6>
 
-            <ul class="navbar-nav mb-md-4">
+            <ul class="navbar-nav ">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}"><i class="fe fe-users"></i>Пользователи</a>
                 </li>
@@ -19,7 +20,7 @@
                     <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" href="{{ route('employees.index') }}"><i class="fe fe-user-check"></i>Сотрудники</a>
                 </li>
             </ul>
-
+            <hr class="navbar-divider">
             <h6 class="navbar-heading">Точки</h6>
 
             <ul class="navbar-nav mb-md-4">
@@ -32,12 +33,12 @@
                 </li>
 
             </ul>
-
-            <h6 class="navbar-heading"></h6>
+            <hr class="navbar-divider">
+            <h6 class="navbar-heading">Справочники</h6>
 
             <ul class="navbar-nav mb-md-4">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}" href="{{ route('categories.index') }}"><i class="fe fe-grid"></i>Категории</a>
+                    <a class="nav-link {{ request()->routeIs('quizzes.*') ? 'active' : '' }}" href="{{ route('quizzes.index') }}"><i class="fe fe-check-square"></i>Опросы</a>
                 </li>
             </ul>
 
