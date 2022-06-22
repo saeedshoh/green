@@ -16,6 +16,6 @@ class MarkController extends Controller
      */
     public function __invoke()
     {
-        return MarkResource::collection(Place::select('id', 'title', 'lat', 'lng')->get());
+        return MarkResource::collection(Place::all());
     }
 }
