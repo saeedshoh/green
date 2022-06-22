@@ -13,34 +13,34 @@ use App\Http\Resources\UserResource;
 
 class QrCodeController extends Controller
 {
-    public function user($uuid, QrCodeRequest $request, GpsService $gpsService, UserService $userService)
+    private $gpsService;
+
+    private $userService;
+
+    public function __construct(GpsService $gpsService, UserService $userService)
     {
+        $this->userService = $userService;
+        $this->gpsService = $gpsService;
+    }
+    public function scan($uuid, QrCodeRequest $request)
+    {
+        /**
+         *  Поиск по $uuid в таблице пользователей.
+         */
         $user = User::whereUuid($uuid)->first();
+        if ($user)
+            return $this->connectScan($user, $request);
 
-        if ($user) {
-
-            if ($gpsService->measureDistanceDetweenPoint($user->lat, $user->lng, $request->lat, $request->lng) >= 300)
-                return response()->error('Ползователь не рядом с вами, пожалуйста, подойдите ближе ', 403);
-
-            $userService->addUserBalls(auth()->user(), $user);
-
-            $userService->updateUuid($user);
-
-            return new UserResource($user);
-        }
-
+        /**
+         *  Поиск по $uuid в таблице точки.
+         */
         $place = Place::whereUuid($uuid)->first();
+        if ($place)
+            return $this->placeScan($place, $request);
 
-        if ($place) {
-            if ($gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
-                return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
-
-
-            $userService->addPlaceBalls($place->points_per_visit, $place->id);
-
-            return new PlaceResource($place);
-        }
-
+        /**
+         * В случае неудачи отправим текст ошибки.
+         */
         return response()->json(['message' => 'Данные не найдены'], 404);
     }
 
@@ -52,5 +52,28 @@ class QrCodeController extends Controller
         return response()->json([
             'data' => auth()->user()->uuid
         ]);
+    }
+
+    private function connectScan($user, $request)
+    {
+        if ($this->gpsService->measureDistanceDetweenPoint($user->lat, $user->lng, $request->lat, $request->lng) >= 300)
+            return response()->error('Ползователь не рядом с вами, пожалуйста, подойдите ближе ', 403);
+
+        $this->userService->addUserBalls(auth()->user(), $user);
+
+        $this->userService->updateUuid($user);
+
+        return new UserResource($user);
+    }
+
+    private function placeScan($place, $request)
+    {
+        if ($this->gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
+            return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
+
+
+        $this->userService->addPlaceBalls($place->points_per_visit, $place->id);
+
+        return new PlaceResource($place);
     }
 }

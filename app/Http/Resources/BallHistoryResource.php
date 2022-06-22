@@ -19,8 +19,8 @@ class BallHistoryResource extends JsonResource
         return [
             'id'            =>  $this->id,
             'type'          => $this->type,
-            'place_name'    => $this->when($this->type == 'place', Place::withTrashed()->findOrFail($this->model_id)->title),
-            'user_name'     => $this->when($this->type == 'connect', User::withTrashed()->findOrFail($this->model_id)->name),
+            'place_name'    => $this->when($this->type == 'place', Place::withTrashed()->find($this->model_id)->title ?? ''),
+            'user_name'     => $this->when($this->type == 'connect', User::withTrashed()->find($this->model_id)->name ?? ''),
             'ball'          => $this->ball,
             'created_at'    => $this->created_at,
 
