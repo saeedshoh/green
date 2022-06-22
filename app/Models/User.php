@@ -58,4 +58,19 @@ class User extends Authenticatable
             $user->save();
         });
     }
+
+    public function balls()
+    {
+        return $this->hasMany(Ball::class);
+    }
+
+    public function connectBalls()
+    {
+        return $this->balls()->where('type', 'connect');
+    }
+
+    public function placeBalls()
+    {
+        return $this->balls()->where('type', 'place');
+    }
 }

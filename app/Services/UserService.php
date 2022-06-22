@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Ball;
+use App\Models\User;
 
 class UserService
 {
@@ -60,5 +61,14 @@ class UserService
     {
         $user->uuid = generateUuid();
         $user->save();
+    }
+
+    public function hasConnectionOnLastDay(User $user)
+    {
+        $lastConnect = auth()->user()->connectBalls()->where('model_id', $user->id)->latest()->first();
+
+        if ($lastConnect && now()->subDay() < $lastConnect->created_at)
+            
+
     }
 }

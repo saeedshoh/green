@@ -59,9 +59,14 @@ class QrCodeController extends Controller
         if ($this->gpsService->measureDistanceDetweenPoint($user->lat, $user->lng, $request->lat, $request->lng) >= 300)
             return response()->error('Ползователь не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
+        if ($user->id == auth()->user()->id)
+            return response()->error('Вы не можете сканировать свой QR ', 403);
+
+        // $this->userService->hasConnectionOnLastDay($user);
+
         $this->userService->addUserBalls(auth()->user(), $user);
 
-        $this->userService->updateUuid($user);
+        // $this->userService->updateUuid($user);
 
         return new UserResource($user);
     }

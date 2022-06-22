@@ -22,7 +22,7 @@ class BallHistoryResource extends JsonResource
             'place_name'    => $this->when($this->type == 'place', Place::withTrashed()->find($this->model_id)->title ?? ''),
             'user_name'     => $this->when($this->type == 'connect', User::withTrashed()->find($this->model_id)->name ?? ''),
             'ball'          => $this->ball,
-            'created_at'    => $this->created_at,
+            'created_at'    => $this->created_at->format('Y-m-d H:m:s'),
 
         ];
     }
