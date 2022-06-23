@@ -53,7 +53,6 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::created(function ($user) {
-            $user->name = 'Yuldur';
             $user->avatar = 'images/default.png';
             $user->save();
         });

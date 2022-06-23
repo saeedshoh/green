@@ -33,7 +33,7 @@
                             <div class="row">
                                 <template x-for="(field, index) in fields" :key="field.id">
                                     <div class="col-12 my-2" style="display: inherit; padding-right: 0;">
-                                        <input type="text" name="variants[]" class="form-control" id="fullNameInput" placeholder="Введите название точки" maxlength="100" required autofocus>
+                                        <input type="text" name="variants[]" class="form-control" id="fullNameInput" placeholder="Введите вариант ответа" maxlength="100" required autofocus>
                                         <button type="button" class="btn btn-danger mx-2" data-bs-toggle="tooltip" @click="removeField(field)" title="Удалить последный вариант"> <i class="fe fe-x-circle"></i> </button>
                                     </div>
                                 </template>
@@ -44,11 +44,18 @@
                         </div>
 
                     </div>
+                    @if ($errors->any())
+                        <ul class="list-group my-3">
+                            @foreach ($errors->all() as $error)
+                                <li class="list-group-item list-group-item-danger text-white">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
 
                     <hr class="my-5">
                     <div class="d-flex justify-content-between">
                         <button type="reset" class="btn btn-lg btn-white">Очистить</button>
-                        <button type="submit"  class="btn btn-lg btn-primary" x-model="submit" id="submit">Добавить</button>
+                        <button type="submit" class="btn btn-lg btn-primary" x-model="submit" id="submit">Добавить</button>
                     </div>
                 </form>
             </div>
@@ -57,7 +64,7 @@
     <script type="text/javascript">
         function alpine() {
             return {
-                submit : false,
+                submit: false,
                 fields: [{
                     id: 1,
                 }, {

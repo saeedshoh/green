@@ -16,4 +16,12 @@ class Question extends Model
      * @var array
      */
     protected $fillable = ['title', 'points_for_passing', 'start', 'ending'];
+
+    /**
+     * Получить все варианти опросника.
+     */
+    public function vartiants()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\QuizRequest;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,13 @@ class QuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuizRequest $request)
     {
-        //
+        $question = Question::create($request->validated());
+
+
+        dd($request->all());
+        $question->variants()->createMany();
     }
 
     /**
