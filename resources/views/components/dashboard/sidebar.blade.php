@@ -33,14 +33,14 @@
                 </li>
 
             </ul>
-            {{-- <hr class="navbar-divider">
+            <hr class="navbar-divider">
             <h6 class="navbar-heading">Справочники</h6>
 
             <ul class="navbar-nav mb-md-4">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('quizzes.*') ? 'active' : '' }}" href="{{ route('quizzes.index') }}"><i class="fe fe-check-square"></i>Опросы</a>
                 </li>
-            </ul> --}}
+            </ul>
 
             <div class="mt-auto"></div>
         </div>

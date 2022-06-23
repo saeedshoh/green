@@ -59,9 +59,11 @@ class QuizController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($question)
     {
-        
+        $question = Question::withTrashed()->findOrFail($question);
+
+        return view('dashboard.quiz.show')->withQuiz($question->load('variants'));
     }
 
     /**
