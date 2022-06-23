@@ -20,7 +20,7 @@ class Question extends Model
     /**
      * Получить все варианти опросника.
      */
-    public function vartiants()
+    public function variants()
     {
         return $this->hasMany(Answer::class);
     }

@@ -21,6 +21,9 @@ class UploadController extends Controller
         if ($request->file('avatar')) {
             $file = $request->file('avatar')->store($dir, ['disk' => 'public']);
 
+            $user = auth()->user();
+            $user->avatar = "/storage/" . $file;
+            $user->save();
             return response()->success("/storage/" . $file, 200);
         }
     }

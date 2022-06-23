@@ -5,10 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuizRequest;
 use App\Models\Question;
+use App\Services\QuizService;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
+    protected $service;
+
+    public function __construct(QuizService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,9 +46,11 @@ class QuizController extends Controller
     {
         $question = Question::create($request->validated());
 
+        $this->service->syncVariants($question, $request->variants);
 
-        dd($request->all());
-        $question->variants()->createMany();
+        alert()->success('Успешно!', 'Опрос успешно добавлен!');
+
+        return redirect()->route('quizzes.index');
     }
 
     /**
@@ -52,7 +61,7 @@ class QuizController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        
     }
 
     /**
