@@ -19,7 +19,7 @@ class UploadController extends Controller
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
         if ($request->file('avatar')) {
-            $file = $request->file('avatar')->store($dir, ['disk' => 'files']);
+            $file = $request->file('avatar')->store('place', ['disk' => 'files']);
 
             $user = auth()->user();
             $user->avatar = "/files/" . $file;
