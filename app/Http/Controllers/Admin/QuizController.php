@@ -46,7 +46,7 @@ class QuizController extends Controller
     {
         $question = Question::create($request->validated());
 
-        $this->service->syncVariants($question, $request->variants);
+        $this->service->saveVariants($question, $request->variants);
 
         alert()->success('Успешно!', 'Опрос успешно добавлен!');
 
@@ -72,9 +72,10 @@ class QuizController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit($question)
     {
-        //
+        $question = Question::withTrashed()->findOrFail($question);
+        return view('dashboard.quiz.edit')->withQuiz($question->load('variants'));
     }
 
     /**
@@ -84,9 +85,17 @@ class QuizController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(QuizRequest $request, $question)
     {
-        //
+        $question = Question::withTrashed()->findOrFail($question);
+
+        $question->update($request->validated());
+
+        $this->service->syncVariants($question, $request->variants);
+
+        alert()->success('Успешно!', 'Опрос успешно обновлен!');
+
+        return redirect()->route('quizzes.index');
     }
 
     /**
@@ -95,9 +104,15 @@ class QuizController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy($question)
     {
-        //
+        $question = Question::withTrashed()->findOrFail($question);
+
+        $question->delete();
+
+        alert()->success('Успешно!', 'Опрос успешно удален!');
+
+        return back();
     }
 
     public function restore($question)
@@ -108,5 +123,4 @@ class QuizController extends Controller
 
         return back();
     }
-
 }

@@ -7,7 +7,7 @@ use App\Models\Answer;
 
 class QuizService
 {
-    public function syncVariants($question, $requests)
+    public function saveVariants($question, $requests)
     {
         $variants = [];
         foreach ($requests as $variant) {
@@ -15,5 +15,15 @@ class QuizService
         }
 
         $question->variants()->createMany($variants);
+    }
+
+
+    public function syncVariants($question, $requests)
+    {
+        foreach ($requests as $id => $title) {
+            $question->variants()->whereId($id)->update([
+                'title'  => $title[0],
+            ]);
+        }
     }
 }

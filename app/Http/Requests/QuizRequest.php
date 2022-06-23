@@ -26,7 +26,7 @@ class QuizRequest extends FormRequest
         return [
             'title'                 => 'required|min:2',
             'points_for_passing'    => 'required|integer|min:1',
-            'start'                 => 'required|after:'.now(),
+            'start'                 => 'required|after:'.now()->subMinute(),
             'ending'                => 'required|after:'.now()->parse(request()->start),
             'variants'              => 'required|array|exclude'
         ];
