@@ -4,11 +4,11 @@
             <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6 my-5 align-self-center">
                 <div class="row justify-content-center">
                     <div class="col-3" style="width: 25%">
-                        <div class="card p-2" style="border-radius: 27px; border: none; box-shadow: 0px 0rem 1rem 5px rgb(0 0 0 / 5%)">
-                            <div class="card-body" style="padding:14px">
+                        <div class="card" style="border-radius: 27px;width: 128px;height: 128px;box-shadow: 0px 0rem 1rem 5px rgb(0 0 0 / 5%)">
+                            <div class="card-body" style="padding:14px;text-align: center;width: 128px;height: 128px;line-height: 94px;">
                                 <div class="avatar avatar-lg">
                                     <img src="/images/default.png" alt="..." class="avatar-img rounded-circle">
-                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>
