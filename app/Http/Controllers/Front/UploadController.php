@@ -19,12 +19,12 @@ class UploadController extends Controller
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
         if ($request->file('avatar')) {
-            $file = $request->file('avatar')->store($dir, ['disk' => 'public']);
+            $file = $request->file('avatar')->store($dir, ['disk' => 'files']);
 
             $user = auth()->user();
-            $user->avatar = "/storage/" . $file;
+            $user->avatar = "/files/" . $file;
             $user->save();
-            return response()->success("/storage/" . $file, 200);
+            return response()->success("/files/" . $file, 200);
         }
     }
 }
