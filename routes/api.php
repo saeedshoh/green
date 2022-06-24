@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\GiftController;
 use App\Http\Controllers\Front\MarkController;
-use App\Http\Controllers\Front\{AuthController, BallHistoryController, CategoryController, LeaderController, LogoutController, PlaceController, QrCodeController, UpdateProfileController, UploadController};;
+use App\Http\Controllers\Front\{AuthController, BallHistoryController, CategoryController, LeaderController, LogoutController, PlaceController, QrCodeController, QuizController, UpdateProfileController, UploadController};;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,11 @@ Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
     Route::get('categories/{category}', [CategoryController::class, 'show']);
     Route::get('user', [AuthController::class, 'user']);
     Route::get('places/{place}', PlaceController::class);
+});
 
+Route::prefix('quiz')->middleware(['auth:sanctum',])->group(function () {
+    Route::get('/', [QuizController::class, 'index']);
+    Route::post('/result/{quistion}', [QuizController::class, 'storeResult']);
 });
 
 

@@ -1,13 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\PlaceController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\QuizController;
+use App\Http\Controllers\Admin\{AuthController, UserController, PlaceController, CategoryController, EmployeeController, QuizController};
 
 /*
 |--------------------------------------------------------------------------

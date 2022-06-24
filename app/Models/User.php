@@ -72,4 +72,14 @@ class User extends Authenticatable
     {
         return $this->balls()->where('type', 'place');
     }
+
+    public function quizBalls()
+    {
+        return $this->balls()->where('type', 'quiz');
+    }
+
+    public function quizzes()
+    {
+        return $this->belongsToMany(Question::class, 'quiz_user')->withPivot('answer_id')->withTimestamps();
+    }
 }

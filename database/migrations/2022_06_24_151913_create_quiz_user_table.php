@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('balls', function (Blueprint $table) {
+        Schema::create('quiz_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->integer('model_id')->comment('user_id or place_id or quiz_id');
-            $table->enum('type', ['place', 'connect', 'quiz']);
-            $table->integer('ball');
+            $table->foreignId('question_id');
+            $table->foreignId('answer_id');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balls');
+        Schema::dropIfExists('quiz_user');
     }
 };

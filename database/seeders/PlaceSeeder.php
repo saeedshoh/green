@@ -17,6 +17,7 @@ class PlaceSeeder extends Seeder
     {
         Place::create([
             'title'             => 'Tcell Plaza',
+            'address'           => 'проспект Рудаки 34',
             'image'             => '/files/place/SbMZpm2Eewfn4LOyL8rkHeudpuAa3SMAPfQXz6Nm.jpg',
             'working_hours'     => '08:00 - 15:00',
             'points_per_visit'  => 10,

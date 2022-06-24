@@ -36,4 +36,9 @@ class Question extends Model
     {
         return Carbon::parse($value)->format('Y-m-d\TH:i');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'quiz_user')->withPivot('answer_id')->withTimestamps();
+    }
 }

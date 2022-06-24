@@ -15,7 +15,7 @@
 
                                 <!-- Title -->
                                 <h4 class="card-header-title">
-                                    Название
+                                    Вопрос
                                 </h4>
 
                             </div>
