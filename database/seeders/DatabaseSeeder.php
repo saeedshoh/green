@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Question;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +17,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             EmployeeSeeder::class,
-            GiftSeeder::class
+            GiftSeeder::class,
+            QuestionSeeder::class,
+            PlaceSeeder::class
         ]);
 
         // Place::factory(25)->create();

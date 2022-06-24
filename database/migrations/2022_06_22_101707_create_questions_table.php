@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -16,8 +17,8 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->timestamp('start');
-            $table->timestamp('ending');
+            $table->timestamp('start')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('ending')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('points_for_passing');
             $table->softDeletes();
             $table->timestamps();
