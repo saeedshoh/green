@@ -61,4 +61,5 @@ class ImageService
 
         return $place->image;
     }
+
 }

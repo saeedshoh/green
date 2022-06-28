@@ -40,6 +40,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('quizzes.*') ? 'active' : '' }}" href="{{ route('quizzes.index') }}"><i class="fe fe-check-square"></i>Опросы</a>
                 </li>
+
+                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('advertisings.*') ? 'active' : '' }}" href="{{ route('advertisings.index') }}"><i class="fe fe-gift"></i>Рекламы</a>
+                </li>
+
             </ul>
 
             <div class="mt-auto"></div>

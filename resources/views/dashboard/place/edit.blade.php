@@ -1,5 +1,5 @@
-<x-dashboard-layout title="Добавление точки">
-    <x-dashboard-header-small pretitle="Новая" title="Точка">
+<x-dashboard-layout title="Изменение точки">
+    <x-dashboard-header-small pretitle="Изменение" title="Точка">
         <a href="{{ route('places.index') }}" class="btn btn-primary lift">Назад</a>
     </x-dashboard-header-small>
 
