@@ -25,6 +25,7 @@
                             <th><a href="#" class="text-muted list-sort" data-sort="place-id">#</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="place-fullname">Название</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="place-placename">Адрес</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="place-placename">Категория</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="place-placename">Режим работы</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="place-placename">Тел</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="place-placename">Кол.во баллов за посещение</a></th>
@@ -50,6 +51,7 @@
                                 </td>
 
                                 <td class="place-fullname">{{ $place->address }}</td>
+                                <td class="place-fullname">{{ $place->category->title ?? '' }}</td>
                                 <td class="place-fullname">{{ $place->working_hours }}</td>
                                 <td class="place-fullname">{{ $place->phone }}</td>
                                 <td class="place-fullname">{{ $place->points_per_visit }}</td>
