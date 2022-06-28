@@ -19,7 +19,7 @@
                             <th><a href="#" class="text-muted list-sort" data-sort="user-id">Место</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">ФИО</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-username">Балл</a></th>
-                            <th><a href="#" class="text-muted list-sort" data-sort="user-username">История баллов</a></th>
+                            <th style="text-align: end"><a href="#" class="text-muted list-sort" data-sort="user-username">История баллов</a></th>
                         </tr>
                     </thead>
                     <tbody class="list font-size-base">
