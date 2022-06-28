@@ -6,7 +6,7 @@
 
         <a class="navbar-brand" href="" style="color: #FF7A00; font-weight: 700">
             <img src="{{ asset('/images/default.png') }}" class="navbar-brand-img mx-auto" alt="Tcell">
-            <span style="vertical-align: sub">U Project</span>
+            <span style="vertical-align: sub">Project</span>
         </a>
 
         <div class="collapse navbar-collapse" id="sidebarCollapse">
