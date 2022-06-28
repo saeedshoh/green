@@ -41,8 +41,12 @@
                     <a class="nav-link {{ request()->routeIs('quizzes.*') ? 'active' : '' }}" href="{{ route('quizzes.index') }}"><i class="fe fe-check-square"></i>Опросы</a>
                 </li>
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('advertisings.*') ? 'active' : '' }}" href="{{ route('advertisings.index') }}"><i class="fe fe-gift"></i>Рекламы</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('advertisings.*') ? 'active' : '' }}" href="{{ route('places.map') }}"><i class="fe fe-map"></i>Метки на карте</a>
                 </li>
 
             </ul>
@@ -60,10 +64,10 @@
                 <!-- Toggle -->
                 <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-sm avatar-online">
-                        @if (auth()->user()->avatar)
+                        @if (auth()->user())
                             <img class="avatar-img rounded-circle" src="{{ asset(auth()->user()->avatar) }}" alt="...">
                         @else
-                            <span class="avatar-title rounded-circle">{{ mb_substr(auth()->user()->name, 0, 1) }}</span>
+                            <span class="avatar-title rounded-circle">{{ mb_substr(auth()->user(), 0, 1) }}</span>
                         @endif
                     </div>
                 </a>
