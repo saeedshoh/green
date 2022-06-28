@@ -56,14 +56,14 @@ class QrCodeController extends Controller
 
     private function connectScan($user, $request)
     {
-        if ($this->gpsService->measureDistanceDetweenPoint($user->lat, $user->lng, $request->lat, $request->lng) >= 300)
+        if ($this->gpsService->measureDistanceDetweenPoint($user->lat, $user->lng, $request->lat, $request->lng) >= setting('maximum_distance_between_addresses'))
             return response()->error('Ползователь не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
         if ($user->id == auth()->user()->id)
             return response()->error('Вы не можете сканировать свой QR ', 403);
 
-        // if ($this->userService->hasConnectScanOnLastDay($user))
-        //     return response()->error('Вы можете использовать баллы U-Connect только 1 раз в день ', 403);
+        if ($this->userService->hasConnectScanOnLastDay($user))
+            return response()->error('Вы можете использовать баллы U-Connect только 1 раз в день ', 403);
 
         $this->userService->addUserBalls(auth()->user(), $user);
 
@@ -74,11 +74,11 @@ class QrCodeController extends Controller
 
     private function placeScan($place, $request)
     {
-        if ($this->gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= 300)
+        if ($this->gpsService->measureDistanceDetweenPoint($place->lat, $place->lng, $request->lat, $request->lng) >= setting('maximum_distance_between_addresses'))
             return response()->error('Точка не рядом с вами, пожалуйста, подойдите ближе ', 403);
 
-        // if ($this->userService->hasPlaceScanOnLastDay($place))
-        //     return response()->error('Вы можете использовать баллы QR- Places только 1 раз в день ', 403);
+        if ($this->userService->hasPlaceScanOnLastDay($place))
+            return response()->error('Вы можете использовать баллы QR- Places только 1 раз в день', 403);
 
         $this->userService->addPlaceBalls($place->points_per_visit, $place->id);
 

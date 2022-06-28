@@ -21,6 +21,7 @@ class PlaceSeeder extends Seeder
             'image'             => '/files/place/SbMZpm2Eewfn4LOyL8rkHeudpuAa3SMAPfQXz6Nm.jpg',
             'working_hours'     => '08:00 - 15:00',
             'points_per_visit'  => 10,
+            'uuid'              => generateUuid(),
             'phone'             => '+992 37 223 2121',
             'lat'               => '38.5702407402598300',
             'lng'               => '68.7922693669843900',

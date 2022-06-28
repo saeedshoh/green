@@ -18,8 +18,12 @@
                         <tbody class="list font-size-base">
                             @foreach ($settings as $setting)
                                 <tr>
-                                    <td class="user-fullname w-25">{{ $setting->name }}</td>
-                                    <td class="user-username w-75">
+                                    <td class="user-fullname w-50">{{ $setting->name }}
+                                        <p class="header-subtitle">
+                                            {{ $setting->decription }}
+                                        </p>
+                                    </td>
+                                    <td class="user-username w-25">
                                         <div class="input-group input-group-merge mb-3 w-50" style="float: right">
                                             <input class="form-control" name="{{ $setting->key }}" type="text" value="{{ $setting->value }}" required>
                                             <div class="input-group-text" id="inputGroup">

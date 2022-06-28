@@ -46,24 +46,24 @@ class UserService
     public function addUserBalls($user1, $user2)
     {
 
-        $user1->increment('ball');
+        $user1->increment('ball', setting('ball_for_u_connect'));
         $user1->save();
 
-        $user2->increment('ball');
+        $user2->increment('ball', setting('ball_for_u_connect'));
         $user2->save();
 
         Ball::create([
             'user_id'   => $user1->id,
             'model_id'  => $user2->id,
             'type'      => 'connect',
-            'ball'      => 1,
+            'ball'      => setting('ball_for_u_connect'),
         ]);
 
         Ball::create([
             'user_id'   => $user2->id,
             'model_id'  => $user1->id,
             'type'      => 'connect',
-            'ball'      => 1,
+            'ball'      => setting('ball_for_u_connect'),
         ]);
     }
 
@@ -85,7 +85,7 @@ class UserService
     {
         $lastConnect = auth()->user()->connectBalls()->where('model_id', $user->id)->latest()->first();
 
-        if ($lastConnect && now()->subDay() < $lastConnect->created_at)
+        if ($lastConnect && now()->subDays(setting('using_qr_places')) < $lastConnect->created_at)
             return true;
 
         return false;

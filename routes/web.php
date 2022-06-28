@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LeaderController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\{AdvertisingController, AuthController, UserController, PlaceController, CategoryController, EmployeeController, PlaceOnMapController, QuizController};
 
 /*
@@ -27,6 +28,7 @@ Route::middleware(['auth:employee'])->group(function () {
         'categories'                => CategoryController::class,
         'quizzes'                   => QuizController::class,
         'advertisings'              => AdvertisingController::class,
+        'settings'                  => SettingController::class,
     ]);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

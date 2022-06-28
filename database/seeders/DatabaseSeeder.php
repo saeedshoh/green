@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             GiftSeeder::class,
             QuestionSeeder::class,
-            PlaceSeeder::class
+            PlaceSeeder::class,
+            SettingSeeder::class,
         ]);
 
         // Place::factory(25)->create();

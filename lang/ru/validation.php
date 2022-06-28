@@ -115,6 +115,9 @@ return [
         'variants'  => 'варинаты',
         'image'     => 'изображения',
         'description ' => 'описание',
+        'ball_for_u_connect ' => 'балл за U-Connect',
+        'maximum_distance_between_addresses ' => 'использование QR-Places',
+        'using_qr_places ' => 'максимальная расстояние между адресами',
     ],
 
 ];

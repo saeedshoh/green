@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Place;
 use App\Models\Question;
+use App\Models\Setting;
 use Illuminate\Support\Str;
 
 if (!function_exists('generateUuid')) {
@@ -33,3 +34,9 @@ if (!function_exists('getQuizName')) {
     }
 }
 
+if (!function_exists('setting')) {
+    function setting($key)
+    {
+        return Setting::where('key',$key)->first()->value;
+    }
+}

@@ -20,6 +20,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" href="{{ route('employees.index') }}"><i class="fe fe-user-check"></i>Сотрудники</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('settings.*') ? 'active' : '' }}" href="{{ route('settings.index') }}"><i class="fe fe-settings"></i>Настройки</a>
+                </li>
+
             </ul>
             <hr class="navbar-divider">
             <h6 class="navbar-heading">Точки</h6>
