@@ -50,6 +50,11 @@
                     <a class="nav-link {{ request()->routeIs('advertisings.*') ? 'active' : '' }}" href="{{ route('places.map') }}"><i class="fe fe-map"></i>Метки на карте</a>
                 </li>
 
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('leaders.*') ? 'active' : '' }}" href="{{ route('leaders.show') }}"><i class="fe fe-bar-chart"></i>Топ лидеров</a>
+                </li>
+
             </ul>
 
             <div class="mt-auto"></div>

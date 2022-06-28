@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\LeaderController;
 use App\Http\Controllers\Admin\{AdvertisingController, AuthController, UserController, PlaceController, CategoryController, EmployeeController, PlaceOnMapController, QuizController};
 
 /*
@@ -31,6 +32,8 @@ Route::middleware(['auth:employee'])->group(function () {
 });
 
 Route::prefix('')->group(function () {
+    Route::get('leaders', [LeaderController::class, 'index'])->name('leaders.show');
+    Route::get('leaders/history/{user}', [LeaderController::class, 'history'])->name('leaders.history');
     Route::get('map/places', PlaceOnMapController::class)->name('places.map');
     Route::put('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::put('employees/{employee}/restore', [EmployeeController::class, 'restore'])->name('employees.restore');

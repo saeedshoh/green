@@ -16,14 +16,16 @@
                 <table class="table table-hover tabl33e-nowrap card-table">
                     <thead>
                         <tr>
-                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">ФИО</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-id">Место</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-fullname">ФИО</a></th>
                             <th><a href="#" class="text-muted list-sort" data-sort="user-username">Балл</a></th>
+                            <th><a href="#" class="text-muted list-sort" data-sort="user-username">История баллов</a></th>
                         </tr>
                     </thead>
                     <tbody class="list font-size-base">
                         @forelse ($leaders as $leader)
                             <tr>
+                                <td class="user-id" style="width: 15px;">{{ $loop->iteration }}</td>
                                 <td>
 
                                     <!-- Avatar -->
@@ -31,13 +33,18 @@
                                         @if ($leader->avatar)
                                             <img class="avatar-img rounded-circle" src="{{ asset($leader->avatar) }}" alt="...">
                                         @else
-                                            <span class="avatar-title rounded-circle">{{ mb_substr($leader->full_name, 0, 1) }}</span>
+                                            <span class="avatar-title rounded-circle">{{ mb_substr($leader->name, 0, 1) }}</span>
                                         @endif
-                                    </div> <a class="item-name text-reset">{{ $leader->full_name }}</a>
+                                    </div> <a href="{{ route('users.show', $leader->id) }}" class="item-name text-reset">{{ $leader->name }}</a>
 
                                 </td>
-                                <td class="user-id">{{ $loop->iteration }}</td>
+
                                 <td class="user-fullname">{{ $leader->ball }}</td>
+                                <td style="text-align: end">
+                                    <a href="{{ route('leaders.history', $leader->id) }}" class="btn btn-sm btn-white me-2" data-bs-toggle="tooltip" title="Показать история баллов">
+                                        <span class="fe fe-info"></span>
+                                    </a>
+                                </td>
                             </tr>
                         @empty
                             <tr>
