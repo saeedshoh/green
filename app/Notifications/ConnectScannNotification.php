@@ -28,7 +28,6 @@ class ConnectScannNotification extends Notification
 
     public function toFcm($notifiable)
     {
-        dd($this->data['img_path']);
         return FcmMessage::create()
             ->setData(['data1' => 'value', 'data2' => 'value2'])
             ->setNotification(\NotificationChannels\Fcm\Resources\Notification::create()
