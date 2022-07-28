@@ -67,7 +67,7 @@ class ImageService
     {
         if (request()->file('image')) {
             $file = request()->file('image')->store('place', ['disk' => 'files']);
-            return '/files/' . $file;
+            return url('/').'/files/' . $file;
         }
     }
 }
