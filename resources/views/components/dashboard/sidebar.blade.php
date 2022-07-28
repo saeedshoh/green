@@ -60,6 +60,10 @@
                     <a class="nav-link {{ request()->routeIs('leaders.*') ? 'active' : '' }}" href="{{ route('leaders.show') }}"><i class="fe fe-bar-chart"></i>Топ лидеров</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('notifications.*') ? 'active' : '' }}" href="{{ route('notifications.index') }}"><i class="fe fe-bell"></i>Уведомления</a>
+                </li>
+
             </ul>
 
             <div class="mt-auto"></div>
