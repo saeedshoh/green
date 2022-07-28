@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\User;
 use App\Services\OptService;
+use Illuminate\Http\Request;
+use App\Services\UserService;
 use App\Http\Requests\AuthRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthResource;
 use App\Http\Resources\UserResource;
-use App\Services\NotificationService;
-use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
+use App\Services\NotificationService;
 
 class AuthController extends Controller
 {
@@ -64,5 +65,12 @@ class AuthController extends Controller
     }
 
 
+    public function fcmToken(Request $request)
+    {
+        $this->validate($request, ['fcm_token' => 'required|min:6']);
 
+        auth()->user()->update(['fcm_token' => $request->fcm_token]);
+
+        return response()->success('FCM Token created successfully', 201);
+    }
 }

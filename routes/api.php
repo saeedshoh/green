@@ -19,6 +19,7 @@ use App\Http\Controllers\Front\{AuthController, BallHistoryController, CategoryC
 Route::prefix('auth')->group(function () {
     Route::post('send-otp', [AuthController::class, 'sendOtp']);
     Route::post('verify-otp', [AuthController::class, 'verifyOtp']);
+    Route::post('fcm-token', [AuthController::class, 'fcmToken'])->middleware('auth:sanctum');
     Route::get('logout', LogoutController::class)->middleware('auth:sanctum');
 });
 

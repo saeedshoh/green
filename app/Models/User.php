@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['phone', 'name', 'uuid', 'avatar', 'lat', 'lng', 'gender', 'birthday'];
+    protected $fillable = ['phone', 'name', 'uuid', 'avatar', 'lat', 'lng', 'fcm_token', 'gender', 'birthday'];
 
 
     /**
@@ -81,5 +81,15 @@ class User extends Authenticatable
     public function quizzes()
     {
         return $this->belongsToMany(Question::class, 'quiz_user')->withPivot('answer_id')->withTimestamps();
+    }
+
+    /**
+     * Specifies the user's FCM token
+     *
+     * @return string|array
+     */
+    public function routeNotificationForFcm()
+    {
+        return $this->fcm_token;
     }
 }

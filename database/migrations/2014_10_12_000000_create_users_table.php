@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('lat', 32, 16)->nullable();
             $table->float('lng', 32, 16)->nullable();
             $table->softDeletes();
+            $table->string('fcm_token')->nullable();
             $table->timestamps();
         });
     }
