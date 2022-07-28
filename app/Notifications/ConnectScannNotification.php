@@ -33,7 +33,7 @@ class ConnectScannNotification extends Notification
             ->setNotification(\NotificationChannels\Fcm\Resources\Notification::create()
                 ->setTitle($this->data['title'])
                 ->setBody($this->data['message'])
-                ->setImage('http://sino.tj/wp-content/uploads/2020/08/izobrazhenie_viber_2020-08-08_21-19-11.jpg')
+                ->setImage('http://sino.tj/wp-content/uploads/2020/08/izobrazhenie_viber_2020-08-08_21-19-11.jpg'))
             ->setAndroid(
                 AndroidConfig::create()
                     ->setFcmOptions(AndroidFcmOptions::create()->setAnalyticsLabel('analytics'))
