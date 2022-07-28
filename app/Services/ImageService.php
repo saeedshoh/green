@@ -13,7 +13,7 @@ class ImageService
     public function uploadImage($user)
     {
         if (request()->file('avatar')) {
-            $file = request()->file('avatar')->store('avatars', ['disk' => 'files']);
+            $file = request()->file('avatar')->store('place', ['disk' => 'files']);
             $user->avatar = "/files/" . $file;
             $user->save();
         }
@@ -66,7 +66,7 @@ class ImageService
     public function uploadNotificationInage($image)
     {
         if (request()->file('image')) {
-            $file = request()->file('image')->store('notifications', ['disk' => 'files']);
+            $file = request()->file('image')->store('place', ['disk' => 'files']);
             return '/files/' . $file;
         }
     }
