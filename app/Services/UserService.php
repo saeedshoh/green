@@ -73,7 +73,7 @@ class UserService
             'img_path'  => '',
         ];
 
-        $user1->notify(new ConnectScannNotification($data));
+        $user2->notify(new ConnectScannNotification($data));
     }
 
     public function updateUuid($user)
