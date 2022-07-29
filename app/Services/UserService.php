@@ -65,6 +65,13 @@ class UserService
             'type'      => 'connect',
             'ball'      => setting('ball_for_u_connect'),
         ]);
+
+        $data = [
+            'title' => 'Поздрявлеем!',
+            'message' => 'Вам'
+        ]
+
+        $user->notify(new ConnectScannNotification());
     }
 
     public function updateUuid($user)

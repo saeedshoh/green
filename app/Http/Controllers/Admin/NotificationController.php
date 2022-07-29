@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Services\ImageService;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NotificationRequest;
 use App\Models\Notification as ModelsNotification;
+use App\Notifications\AdminNotification;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\ConnectScannNotification;
 
 class NotificationController extends Controller
 {
@@ -46,7 +45,7 @@ class NotificationController extends Controller
 
         $users = User::whereNotNull('fcm_token')->get();
 
-        Notification::send($users, new ConnectScannNotification($data));
+        Notification::send($users, new AdminNotification($data));
 
         alert()->success('Успешно!', 'Уведомление успешно добавлено!');
 
@@ -63,17 +62,5 @@ class NotificationController extends Controller
     {
         return view('dashboard.notification.show')
             ->withNotification($notification);
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

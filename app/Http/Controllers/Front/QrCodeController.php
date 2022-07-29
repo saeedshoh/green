@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\QrCodeRequest;
 use App\Http\Resources\PlaceResource;
 use App\Http\Resources\UserResource;
+use App\Notifications\ConnectScannNotification;
 
 class QrCodeController extends Controller
 {
