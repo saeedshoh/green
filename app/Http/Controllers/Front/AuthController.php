@@ -62,16 +62,7 @@ class AuthController extends Controller
 
     public function user()
     {
-        $data = [
-            'title' => 'Поздрявлеем!',
-            'message' => 'Вам добавили балл',
-            'img_path'  => '',
-        ];
-        $user2 = User::find(1);
-
-        $user2->notify(new ConnectScannNotification($data));
-
-        // return new UserResource(auth()->user());
+        return new UserResource(auth()->user());
     }
 
 
