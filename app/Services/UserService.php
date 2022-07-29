@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Ball;
 use App\Models\User;
 use App\Models\Place;
+use App\Notifications\ConnectScannNotification;
 
 class UserService
 {
@@ -68,10 +69,11 @@ class UserService
 
         $data = [
             'title' => 'Поздрявлеем!',
-            'message' => 'Вам'
-        ]
+            'message' => 'Вам добавили балл',
+            'img_path'  => '',
+        ];
 
-        $user->notify(new ConnectScannNotification());
+        $user1->notify(new ConnectScannNotification($data));
     }
 
     public function updateUuid($user)
