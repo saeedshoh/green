@@ -12,6 +12,7 @@ use App\Http\Resources\AuthResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Services\NotificationService;
+use App\Notifications\ConnectScannNotification;
 
 class AuthController extends Controller
 {
@@ -61,7 +62,16 @@ class AuthController extends Controller
 
     public function user()
     {
-        return new UserResource(auth()->user());
+        $data = [
+            'title' => 'Поздрявлеем!',
+            'message' => 'Вам добавили балл',
+            'img_path'  => '',
+        ];
+        $user2 = User::find(1);
+
+        $user2->notify(new ConnectScannNotification($data));
+
+        // return new UserResource(auth()->user());
     }
 
 
