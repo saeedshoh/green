@@ -29,7 +29,7 @@ class AddedNewPlaceNotification extends Notification
     public function toFcm($notifiable)
     {
         return FcmMessage::create()
-            ->setData(['id' => '', 'data2' => 'value2'])
+            ->setData(['type' => 'place', 'id' => $this->data->id ])
             ->setNotification(\NotificationChannels\Fcm\Resources\Notification::create()
                 ->setTitle('Добавлено новое заведение')
                 ->setBody($this->data->title)
