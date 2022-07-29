@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Place;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Services\ImageService;
 use App\Services\QrCodeService;
 use App\Http\Requests\PlaceRequest;
 use App\Http\Controllers\Controller;
-use App\Services\GpsService;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AddedNewPlaceNotification;
 
 class PlaceController extends Controller
 {
@@ -46,8 +47,10 @@ class PlaceController extends Controller
 
         $imageService->uploadPlaceImage($place);
 
-        alert()->success('Успешно!', 'Точка успешно добавлена!');
+        $users = User::whereNotNull('fcm_token')->get();
+        Notification::send($users, new AddedNewPlaceNotification($place->fresh()));
 
+        alert()->success('Успешно!', 'Точка успешно добавлена!');
         return redirect()->route('places.index');
     }
 

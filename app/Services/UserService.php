@@ -68,8 +68,8 @@ class UserService
         ]);
 
         $data = [
-            'title' => 'Поздрявлеем!',
-            'message' => 'Вам добавили балл',
+            'title' => 'Урра!',
+            'message' => 'Вам начислены '.  setting('ball_for_u_connect') .' баллы за сканирование ',
             'img_path'  => '',
         ];
 
