@@ -29,7 +29,7 @@ class ConnectScannNotification extends Notification
     public function toFcm($notifiable)
     {
         return FcmMessage::create()
-            ->setData(['type' => 'hostory'])
+            ->setData(['type' => 'history'])
             ->setNotification(\NotificationChannels\Fcm\Resources\Notification::create()
                 ->setTitle($this->data['title'])
                 ->setBody($this->data['message'])
