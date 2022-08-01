@@ -63,8 +63,8 @@ class QrCodeController extends Controller
         if ($user->id == auth()->user()->id)
             return response()->error('Вы не можете сканировать свой QR ', 403);
 
-        // if ($this->userService->hasConnectScanOnLastDay($user))
-        //     return response()->error('Вы можете использовать баллы U-Connect только 1 раз в день ', 403);
+        if ($this->userService->hasConnectScanOnLastDay($user))
+            return response()->error('Вы можете использовать баллы U-Connect только 1 раз в день ', 403);
 
         $this->userService->addUserBalls(auth()->user(), $user);
 

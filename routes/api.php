@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\GiftController;
 use App\Http\Controllers\Front\MarkController;
+use App\Http\Controllers\Front\NotificationController;
 use App\Http\Controllers\Front\{AuthController, BallHistoryController, CategoryController, LeaderController, LogoutController, PlaceController, QrCodeController, QuizController, UpdateProfileController, UploadController};;
 
 /*
@@ -33,6 +34,8 @@ Route::prefix('profile')->middleware(['auth:sanctum',])->group(function () {
     Route::get('gift', GiftController::class);
     Route::get('ball-history', BallHistoryController::class);
     Route::get('leaders', LeaderController::class);
+    Route::get('notifications', [NotificationController::class, 'index']);
+    Route::post('mark-as-read/{id}', [NotificationController::class, 'markNotification']);
     Route::get('marks', MarkController::class);
     Route::post('upload-avatar', UploadController::class);
     Route::put('update', UpdateProfileController::class);

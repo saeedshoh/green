@@ -54,7 +54,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4"><span class="text-danger">Вы еще не добавили категории</span></td>
+                                <td colspan="4"><span class="text-danger">Уведомление еще не было отправлено</span></td>
                             </tr>
                         @endforelse
                     </tbody>
